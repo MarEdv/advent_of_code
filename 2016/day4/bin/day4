@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+require "day4"
+
+# puts "I was called with #{ARGV.size} arguments: #{ARGV.join(', ')}."
+
+# read lines from a stream and return a list
+def readLines(stream)
+  result = []
+  line = stream.gets
+  while (line != nil)
+    result = result + [line.chomp]
+    line = stream.gets
+  end
+  result
+end
+
+# read the lines and parse them
+lines = readLines($stdin)
+parsedRoomNames = lines.collect do |line|
+  parse(line)
+end
+
+# filter all elments that are correct
+correctRoomNames = parsedRoomNames.select do |x|
+  x[0] == x[2]
+end
+
+# sum the sector id
+sectorIdSum = correctRoomNames.inject(0) do |acc, x|
+  acc + x[1].to_i
+end
+
+puts "Sum of all valid sectorIds: " + sectorIdSum.to_s
+
+decryptedRoomNames = correctRoomNames.collect do |x|
+  encryptedRoomName = x[3].split("-")[0..-2].join("-")
+  [decrypt(encryptedRoomName, x[1]), x[1]]
+end
+
+decryptedRoomNames.collect do |x|
+  puts [x[0], x[1]].to_s
+end
