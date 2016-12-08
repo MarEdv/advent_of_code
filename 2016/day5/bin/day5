@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+require "day5"
+
+puts "I was called with #{ARGV.size} arguments: #{ARGV.join(', ')}."
+
+if ARGV.size != 2
+  puts "You must give two arguments: <roomId> <password_length>"
+else
+  puzzle_input = ARGV[0]
+  password_length = ARGV[1].to_i
+  password = find_password(puzzle_input, password_length, part1AccumulatorFunction, [])
+  puts "Part 1"
+  puts password.collect { |x| x.slice(5) }.join("")
+
+  password2 = find_password(puzzle_input, password_length, part2AccumulatorFunction(password_length), {})
+  puts "Part 2"
+  puts password2.sort_by { |x| [x[0]] }.collect{|x| x[1]}.join("")
+end
