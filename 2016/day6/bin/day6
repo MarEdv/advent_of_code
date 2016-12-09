@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+require "day6"
+
+puts "I was called with #{ARGV.size} arguments: #{ARGV.join(', ')}."
+
+puts "Part 1"
+puts "Message: " + decodeMessage(File.readlines(ARGV[0]), "DESC")
+
+puts "Part 2"
+puts "Message: " + decodeMessage(File.readlines(ARGV[0]), "ASC")
