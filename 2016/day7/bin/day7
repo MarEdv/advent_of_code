@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+require "day7"
+
+puts "I was called with #{ARGV.size} arguments: #{ARGV.join(', ')}."
+
+ips = File.readlines(ARGV[0])
+puts "Part 1"
+puts ips.map { |x| splitIP(x) }
+  .map { |x| toABBAs(x) }
+  .select { |x| isValidTLS(x) }
+  .count
+
+puts "Part 2"
+puts ips.map { |x| splitIP(x) }
+       .map { |x| toABAs(x) }
+       .select { |x| isValidSSL(x) }
+       .map { |x| x.to_s }
+       .count
