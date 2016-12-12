@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+require "day8"
+
+puts "I was called with #{ARGV.size} arguments: #{ARGV.join(', ')}."
+
+lines = File.readlines(ARGV[0])
+display = processLines(lines, createDisplay(50, 6))
+
+puts "Step 1"
+puts "Number of '#' in the display: " + display.flatten.select {|x| x == "#" }.count.to_s
+
+puts "Step 2"
+puts "The display as text: "
+display.map {|line| line.join("") }.each { |x| puts x }

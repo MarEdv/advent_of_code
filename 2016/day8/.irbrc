@@ -1,0 +1,1 @@
+require Dir.pwd + "/lib/day8.rb"
