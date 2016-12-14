@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+require "day9"
+
+puts "I was called with #{ARGV.size} arguments: #{ARGV.join(', ')}."
+
+line = File.readlines(ARGV[0]).map { |x| x.chomp }.join("")
+puts "Step 1"
+puts "Decompressed size: " + decompress(line, decompressMarkerV1).size.to_s
+
+puts "Step 2"
+puts "Decompressed size: " + decompress(line, decompressMarkerV2).size.to_s
