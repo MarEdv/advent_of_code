@@ -1,0 +1,1 @@
+require Dir.pwd + "/lib/day12.rb"

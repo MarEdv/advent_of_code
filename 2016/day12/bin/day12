@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+require "day12"
+
+puts "I was called with #{ARGV.size} arguments: #{ARGV.join(', ')}."
+
+lines = File.readlines(ARGV[0])
+registers = ({
+  'a' => 0,
+  'b' => 0,
+  'c' => 0,
+  'd' => 0
+})
+puts "Step 1"
+puts process(lines, registers).to_s
+
+registers = ({
+  'a' => 0,
+  'b' => 0,
+  'c' => 1,
+  'd' => 0
+})
+puts "Step 2"
+puts process(lines, registers).to_s
