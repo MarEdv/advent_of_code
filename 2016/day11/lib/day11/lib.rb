@@ -43,7 +43,7 @@ def process(state)
     visitedStates.merge(nextStates.map { |x|
       {:levels => x[:levels], :elevator => x[:elevator]}
     })
-    puts "steps: " + s[:steps].to_s + "; " + i.to_s #+ "; " + visitedStates.to_a.to_s
+#    puts "steps: " + s[:steps].to_s + "; " + i.to_s #+ "; " + visitedStates.to_a.to_s
     s = queue.pop
     i += 1
   end
@@ -93,16 +93,16 @@ def isValid(state, move)
 end
 
 def isValidLevel(level)
-  levelGroups = level.group_by {|x| x[:type] }
-  if levelGroups["Microchip"] == nil
+  levelGroups = level.group_by {|x| x[0] }
+  if levelGroups["M"] == nil
     true
   else
-    levelGroups["Microchip"].all? { |chip|
-      if (levelGroups["Generator"] == nil)
+    levelGroups["M"].all? { |chip|
+      if (levelGroups["G"] == nil)
         true
       else
-        gens = levelGroups["Generator"].group_by { |gen|
-          gen[:material] == chip[:material]
+        gens = levelGroups["G"].group_by { |gen|
+          gen[1] == chip[1]
         }
         (gens[true] != nil && gens[true].size == 1) || (gens[false] == nil || gens[false].size == 0)
       end

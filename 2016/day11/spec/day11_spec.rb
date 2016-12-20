@@ -7,34 +7,34 @@ describe Day11 do
   end
 
   it "isFinished_false" do
-    state = ({:levels => [[{:type => "Generator", :material => "Lithium"}],[],[],[]]})
+    state = ({:levels => [["GL"],[],[],[]]})
     expect(isFinished(state)).to eq false
   end
 
   it "isValidLevel_true" do
-    level = [{:type => "Generator", :material => "Lithium"},{:type => "Microchip", :material => "Lithium"}]
+    level = ["GL","ML"]
     expect(isValidLevel(level)).to eq true
   end
 
   it "isValidLevel_false" do
-    level = [{:type => "Generator", :material => "Lithium"},{:type => "Microchip", :material => "Cobalt"}]
+    level = ["GL","MC"]
     expect(isValidLevel(level)).to eq false
   end
 
   it "isValidLevel_false" do
-    level = [{:type => "Generator", :material => "Lithium"},{:type => "Microchip", :material => "Cobalt"},{:type => "Microchip", :material => "Lithium"}]
+    level = ["GL","MC","ML"]
     expect(isValidLevel(level)).to eq false
   end
 
   it "isValid_false" do
-    state = ({:elevator => 1, :levels => [[{:type => "Generator", :material => "Lithium"}],[],[],[]]})
-    move = ({:elevator => 0, :items => [{:type => "Microchip", :material => "Cobalt"}]})
+    state = ({:elevator => 1, :levels => [["GL"],[],[],[]]})
+    move = ({:elevator => 0, :items => ["MC"]})
     expect(isValid(state, move)).to eq false
   end
 
   it "isValid_true" do
-    state = ({:elevator => 1, :levels => [[{:type => "Generator", :material => "Lithium"}],[],[],[]]})
-    move = ({:elevator => 0, :items => [{:type => "Microchip", :material => "Lithium"}]})
+    state = ({:elevator => 1, :levels => [["GL"],[],[],[]]})
+    move = ({:elevator => 0, :items => ["ML"]})
     expect(isValid(state, move)).to eq true
   end
 
@@ -45,18 +45,18 @@ describe Day11 do
   end
 
   it "nextValidStates_1" do
-    state = ({:steps => 0, :elevator => 1, :levels => [[{:type => "Generator", :material => "Lithium"}],[{:type => "Microchip", :material => "Cobalt"}].to_set,[].to_set,[].to_set]})
-    expect(nextValidStates(state)).to eq [{:elevator=>2, :steps=>1, :levels=>[[{:type=>"Generator", :material=>"Lithium"}].to_set, [].to_set, [{:type=>"Microchip", :material=>"Cobalt"}].to_set, [].to_set]}]
+    state = ({:steps => 0, :elevator => 1, :levels => [["GL"],["MC"].to_set,[].to_set,[].to_set]})
+    expect(nextValidStates(state)).to eq [{:elevator=>2, :steps=>1, :levels=>[["GL"].to_set, [].to_set, ["MC"].to_set, [].to_set]}]
   end
 
   it "isValidLevel_false_large" do
-    level = [{:type=>"Generator", :material=>"Cobalt"},
-      {:type=>"Generator", :material=>"Curium"},
-      {:type=>"Generator", :material=>"Ruthenium"},
-      {:type=>"Generator", :material=>"Promethium"},
-      {:type=>"Microchip", :material=>"Promethium"},
-      {:type=>"Microchip", :material=>"Cobalt"},
-      {:type=>"Microchip", :material=>"Plutonium"}
+    level = ["GC",
+      "GD",
+      "GR",
+      "GP",
+      "MP",
+      "MC",
+      "MN"
     ]
     expect(isValidLevel(level)).to eq false
   end

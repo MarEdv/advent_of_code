@@ -11,54 +11,33 @@ initialState = ({
  :levels =>
  [
   [
-   {:type => "Generator", :material => "Promethium"},
-   {:type => "Microchip", :material => "Promethium"}
+   "GT",
+   "MT"
   ].to_set,
   [
-   {:type => "Generator", :material => "Cobalt"},
-   {:type => "Generator", :material => "Curium"},
-   {:type => "Generator", :material => "Ruthenium"},
-   {:type => "Generator", :material => "Plutonium"}
+   "GD",
+   "GC",
+   "GR",
+   "GP"
   ].to_set,
   [
-   {:type => "Microchip", :material => "Cobalt"},
-   {:type => "Microchip", :material => "Curium"},
-   {:type => "Microchip", :material => "Ruthenium"},
-   {:type => "Microchip", :material => "Plutonium"}
+   "MD",
+   "MC",
+   "MR",
+   "MP"
   ].to_set,
   [].to_set
  ]
 })
-
-# Input from example
-# initialState = ({
-#  :steps => 0,
-#  :elevator => 0,
-#  :levels =>
-#  [
-#   [
-#    {:type => "Microchip", :material => "Hydrogen"},
-#    {:type => "Microchip", :material => "Lithium"}
-#   ].to_set,
-#   [
-#    {:type => "Generator", :material => "Hydrogen"}
-#   ].to_set,
-#   [
-#    {:type => "Generator", :material => "Lithium"}
-#   ].to_set,
-#   [].to_set
-#  ]
-# })
 
 puts "Step 1"
 puts process(initialState).to_s
 
 puts "Step 2"
 initialState[:levels][0] += [
-   {:type => "Microchip", :material => "Elerium"},
-   {:type => "Generator", :material => "Elerium"},
-   {:type => "Microchip", :material => "Dilithium"},
-   {:type => "Generator", :material => "Dilithium"}
+   "ME",
+   "GE",
+   "MF",
+   "GF"
   ]
 puts process(initialState).to_s
-
