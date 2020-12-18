@@ -7,6 +7,6 @@
                  [org.clojure/math.combinatorics "0.1.4"]
                  [net.mikera/core.matrix "0.61.0"]
                  [ubergraph "0.4.0"]]
-  :main ^:skip-aot clj.core
+  ;  :main ^:skip-aot clj.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
