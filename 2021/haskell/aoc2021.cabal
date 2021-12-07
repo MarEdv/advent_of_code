@@ -17,6 +17,11 @@ library
   hs-source-dirs:      src
   exposed-modules:     Day01
                      , Day02
+                     , Day03
+                     , Day04
+                     , Day05
+                     , Day06
+                     , Day07
   build-depends:       base >= 4.7 && < 5
                      , pureMD5
                      , bytestring
