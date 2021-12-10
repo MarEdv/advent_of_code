@@ -24,6 +24,7 @@ library
                      , Day07
                      , Day08
                      , Day09
+                     , Day10
   build-depends:       base >= 4.7 && < 5
                      , pureMD5
                      , bytestring
