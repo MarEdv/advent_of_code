@@ -10,6 +10,7 @@ import Day07 ( day07Step1, day07Step2 )
 import Day08 ( day08Step1, day08Step2 ) 
 import Day09 ( day09Step1, day09Step2 ) 
 import Day10 ( day10Step1, day10Step2 ) 
+import Day11 ( day11Step1, day11Step2 ) 
 
 main :: IO ()
 main = do
@@ -23,6 +24,7 @@ main = do
   day08
   day09
   day10
+  day11
 
 day01 :: IO()
 day01 = do
@@ -103,3 +105,11 @@ day10 = do
    putStrLn "Day 10"
    putStrLn $ "\tStep 1: " ++ show (day10Step1 linesOfFiles)
    putStrLn $ "\tStep 2: " ++ show (day10Step2 linesOfFiles)
+
+day11 :: IO()
+day11 = do
+   content <- readFile "day11.txt"
+   let linesOfFiles = lines content
+   putStrLn "Day 11"
+   putStrLn $ "\tStep 1: " ++ show (day11Step1 linesOfFiles)
+   putStrLn $ "\tStep 2: " ++ show (day11Step2 linesOfFiles)
